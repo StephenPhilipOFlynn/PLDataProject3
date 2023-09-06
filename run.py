@@ -21,10 +21,13 @@ fulldataset = SHEET.worksheet('Sheet1')
 data = fulldataset.get_all_values()
 #check data type
 data_type = type(data)
-#turn into dataframe
+#data is a list, turn into dataframe
 df = pd.DataFrame(data)
+#skip row 1 with includes spreadsheet titles
+df = df.iloc[1:]
 #rename columns to access data correctly
 df.columns = ['Div', 'Date', 'H_Team', 'A_Team', 'FT_H_Gls', 'FT_A_Gls', 
 'FT_Result', 'HT_H_Gls', 'HT_A_Gls', 'HT_Result', 'Ref', 'H_Shts', 'A_Shts', 'H_Shts_Trgt', 
 'A_Shts_Trgt', 'H_Fouls', 'A_Fouls', 'H_Corners', 'A_Corners', 'H_Yellow', 'A_Yellow', 'H_Red', 'A_Red']
-print(df)
+#count referee appearances to begin working out which referee gives out most cards
+referee_appearances = df['Ref'].value_counts()
