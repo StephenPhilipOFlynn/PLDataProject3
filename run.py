@@ -31,3 +31,9 @@ df.columns = ['Div', 'Date', 'H_Team', 'A_Team', 'FT_H_Gls', 'FT_A_Gls',
 'A_Shts_Trgt', 'H_Fouls', 'A_Fouls', 'H_Corners', 'A_Corners', 'H_Yellow', 'A_Yellow', 'H_Red', 'A_Red']
 #count referee appearances to begin working out which referee gives out most cards
 referee_appearances = df['Ref'].value_counts()
+#convert from concatenated strings to integers
+df['H_Red'] = df['H_Red'].astype(int)
+df['A_Red'] = df['A_Red'].astype(int)
+#create new column total reds cards per match
+df["Ttl_Mtch_Red"] = df[['H_Red', 'A_Red']].sum(axis=1)
+print(df.loc[206])
