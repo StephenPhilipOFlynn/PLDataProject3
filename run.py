@@ -40,4 +40,10 @@ df["Ttl_Mtch_Red"] = df[['H_Red', 'A_Red']].sum(axis=1)
 ref_red_cards = df.groupby('Ref')['Ttl_Mtch_Red'].sum()
 #find out which referee gives the most cards per game
 ref_redcards_permatch = ref_red_cards / referee_appearances
-
+# most to least
+ref_redcards_permatch_desc = ref_redcards_permatch.sort_values(ascending=False)
+topfour_most_red_card_refs = ref_redcards_permatch_desc.head(4)
+#print top 4
+print("Our players need to be particularly careful with these four referees to avoid red cards")
+print("Fouls while on second yellow cards should be particularly avoided with:")
+print(topfour_most_red_card_refs)
