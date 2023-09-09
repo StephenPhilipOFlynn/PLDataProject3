@@ -25,7 +25,7 @@ data_type = type(data)
 df = pd.DataFrame(data)
 #skip row 1 with includes spreadsheet titles
 df = df.iloc[1:]
-#rename columns to access data correctly
+#rename columns to access data correctly in dataframe
 df.columns = ['Div', 'Date', 'H_Team', 'A_Team', 'FT_H_Gls', 'FT_A_Gls', 
 'FT_Result', 'HT_H_Gls', 'HT_A_Gls', 'HT_Result', 'Ref', 'H_Shts', 'A_Shts', 'H_Shts_Trgt', 
 'A_Shts_Trgt', 'H_Fouls', 'A_Fouls', 'H_Corners', 'A_Corners', 'H_Yellow', 'A_Yellow', 'H_Red', 'A_Red']
@@ -36,4 +36,8 @@ df['H_Red'] = df['H_Red'].astype(int)
 df['A_Red'] = df['A_Red'].astype(int)
 #create new column total reds cards per match
 df["Ttl_Mtch_Red"] = df[['H_Red', 'A_Red']].sum(axis=1)
-print(df.loc[206])
+#find which referees gave most red cards
+ref_red_cards = df.groupby('Ref')['Ttl_Mtch_Red'].sum()
+#find out which referee gives the most cards per game
+ref_redcards_permatch = ref_red_cards / referee_appearances
+
