@@ -56,6 +56,11 @@ same_result_percentage = (same_match_result / total_matches) * 100
 print("Considerations for resting players if winning at half time.")
 print(f"{same_match_result} of the premier league games finished with the same result at half time and full time.")
 print(f"The likelihood that the match result at full time will be the same as the result at half time is: {same_result_percentage}%.")
+#find the number of games where away team winning at half time wins
+away_team_win_both_halfs = df[(df['HT_Result'] == 'A') & (df['FT_Result'] == 'A')]
+away_team_win_first_half_only = df[(df['HT_Result'] == 'A') & (df['FT_Result'] != 'A')]
+count_away_team_win_both_halves = len(away_team_win_both_halfs)
+count_away_team_win_first_half_only = len(away_team_win_first_half_only)
 #check second dataset accessible in terminal
 datasettwo = SHEET.worksheet('Sheet2')
 data_two = datasettwo.get_all_values()
