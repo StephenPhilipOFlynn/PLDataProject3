@@ -44,6 +44,14 @@ ref_redcards_permatch = ref_red_cards / referee_appearances
 ref_redcards_permatch_desc = ref_redcards_permatch.sort_values(ascending=False)
 topfour_most_red_card_refs = ref_redcards_permatch_desc.head(4)
 #print top 4
-print("Our players need to be particularly careful with these four referees to avoid red cards")
+print("Our players need to be particularly careful with the four referees below to avoid red cards")
 print("Fouls while on second yellow cards should be particularly avoided with:")
 print(topfour_most_red_card_refs)
+#work out relationship between result at half-time, result at full time
+#number of games in a season
+total_matches = len(df)
+#number of matches where result is same at full time as it was at half time
+same_match_result = len(df[df['HT_Result'] == df['FT_Result']])
+same_result_percentage = (same_match_result / total_matches) * 100
+print(f"{same_match_result} of the premier league games finished with the same result at half time and full time.")
+print(f"The likelihood that the match result at full time will be the same as the result at half time is: {same_result_percentage}%.")
