@@ -16,9 +16,9 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Premier League Data')
 
-fulldataset = SHEET.worksheet('Sheet1')
+datasetone = SHEET.worksheet('Sheet1')
 
-data = fulldataset.get_all_values()
+data = datasetone.get_all_values()
 #check data type
 data_type = type(data)
 #data is a list, turn into dataframe
@@ -47,11 +47,16 @@ topfour_most_red_card_refs = ref_redcards_permatch_desc.head(4)
 print("Our players need to be particularly careful with the four referees below to avoid red cards")
 print("Fouls while on second yellow cards should be particularly avoided with:")
 print(topfour_most_red_card_refs)
-#work out relationship between result at half-time, result at full time
+#work out relationship between match result at half-time, result at full time
 #number of games in a season
 total_matches = len(df)
 #number of matches where result is same at full time as it was at half time
 same_match_result = len(df[df['HT_Result'] == df['FT_Result']])
 same_result_percentage = (same_match_result / total_matches) * 100
+print("Considerations for resting players if winning at half time.")
 print(f"{same_match_result} of the premier league games finished with the same result at half time and full time.")
 print(f"The likelihood that the match result at full time will be the same as the result at half time is: {same_result_percentage}%.")
+#bring second dataset into terminal
+datasettwo = SHEET.worksheet('Sheet2')
+datatwo = datasettwo.get_all_values()
+print(datatwo)
