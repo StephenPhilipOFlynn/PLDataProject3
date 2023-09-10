@@ -56,7 +56,8 @@ same_result_percentage = (same_match_result / total_matches) * 100
 print("Considerations for resting players if winning at half time.")
 print(f"{same_match_result} of the premier league games finished with the same result at half time and full time.")
 print(f"The likelihood that the match result at full time will be the same as the result at half time is: {same_result_percentage}%.")
-#bring second dataset into terminal
+#check second dataset accessible in terminal
 datasettwo = SHEET.worksheet('Sheet2')
-datatwo = datasettwo.get_all_values()
-print(datatwo)
+data_two = datasettwo.get_all_values()
+#The second data set is also a list. Turn into a dataframe. 
+df_two = pd.DataFrame(data_two)
