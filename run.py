@@ -66,3 +66,14 @@ datasettwo = SHEET.worksheet('Sheet2')
 data_two = datasettwo.get_all_values()
 #The second data set is also a list. Turn into a dataframe. 
 df_two = pd.DataFrame(data_two)
+#remove first row with titles for data manipulation
+df_two = df_two.iloc[1:]
+#rename for data manipulation
+df_two.columns = ['team', 'category', 'league_pos', 'games_televised', 'fin_tv_revenue', 'matches_played', 
+'games_won', 'games_drawn', 'general_lost', 'goals_scored', 'goals_conceded', 'total_goal_diff', 'total_points', 'squad_size', 'squad_aver_age', 
+'squad_overseas', 'fin_team_market', 'fin_market_average', 'att_passes',
+'att_passes_through', 'att_passes_long', 'att_passes_back', 'att_crosses', 'attack_corners', 'total_shots', 'total_shots_on_target',
+'att_goals_headed', 'att_goals_penalty', 'att_goals_box', 'att_goals_outsidebox', 'total_yellow_cards', 'total_red_cards',
+'att_goals_counter', 'att_goals_freekick', 'def_saves', 'def_blocks', 'def_interceptions', 'def_tackles', 'def_tackles_last_man',
+'def_clearances', 'def_headed_clearances', 'def_penalty_conceded', 'att_poss', 'passing_acc']
+print(df_two)
