@@ -89,5 +89,6 @@ df_two['perc_long_passes'] = df_two['ratio_long_passes'] * 100
 #create separate dataframe of just team and their percentage of long balls
 style_of_passing = df_two[['team', 'perc_long_passes']].sort_values(by='perc_long_passes', ascending=False)
 print("Which teams are most reliant on long ball passes in their style of play?")
-print("The following teams are most reliant on long balls in possession")
-print(style_of_passing.head())
+print("The following teams are most reliant on long balls in possession:")
+print(style_of_passing.head(5))
+print("The manager should consider relying on our stronger aerial players for these games, to deal with the higher percentage of long balls")
