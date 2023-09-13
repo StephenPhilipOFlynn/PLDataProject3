@@ -64,6 +64,11 @@ away_team_win_both_halfs = df[(df['HT_Result'] == 'A') & (df['FT_Result'] == 'A'
 away_team_win_first_half_only = df[(df['HT_Result'] == 'A') & (df['FT_Result'] != 'A')]
 count_away_team_win_both_halves = len(away_team_win_both_halfs)
 count_away_team_win_first_half_only = len(away_team_win_first_half_only)
+#calculate games being won by away team at half, irregardless of second half result - combine
+away_wins_first_half = count_away_team_win_first_half_only + count_away_team_win_both_halves
+#calculate percentage of away team conversions
+second_half_away_conversion_rate = (count_away_team_win_both_halves / away_wins_first_half) * 100
+print(f"When winning at half time, the away team went on to secure victory in {second_half_away_conversion_rate}% of games.")
 #check second dataset accessible in terminal
 datasettwo = SHEET.worksheet('Sheet2')
 data_two = datasettwo.get_all_values()
@@ -96,7 +101,7 @@ print("Question 3")
 print("Which teams are most reliant on long ball passes in their style of play?")
 print("The following teams are most reliant on long balls in possession:")
 print(style_of_passing.head(5))
-print("The manager should consider relying on our stronger aerial players for these games, to deal with the higher reliance oon long balls")
+print("The manager should consider relying on our most accomplished aerial players for these games, to deal with the higher reliance on long balls")
 #add line space for clarity
 print(" ")
 print("Please enter one of the team names below to get a short summary of their tactical profile. ")
@@ -105,6 +110,5 @@ print("West Ham, Watford, Crystal Palace, Newcastle, Bournemouth, Burnley, South
 
 # def team_profile(team):
 
-    print()
 
 # def main ()
