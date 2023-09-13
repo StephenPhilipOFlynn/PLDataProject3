@@ -25,50 +25,11 @@ data_type = type(data)
 df = pd.DataFrame(data)
 #skip row 1 with includes spreadsheet titles
 df = df.iloc[1:]
-#rename columns to access data correctly in dataframe
+#rename columns to access data correctly in dataframe sheet 1
 df.columns = ['Div', 'Date', 'H_Team', 'A_Team', 'FT_H_Gls', 'FT_A_Gls', 
 'FT_Result', 'HT_H_Gls', 'HT_A_Gls', 'HT_Result', 'Ref', 'H_Shts', 'A_Shts', 'H_Shts_Trgt', 
 'A_Shts_Trgt', 'H_Fouls', 'A_Fouls', 'H_Corners', 'A_Corners', 'H_Yellow', 'A_Yellow', 'H_Red', 'A_Red']
-#count referee appearances to begin working out which referee gives out most cards
-referee_appearances = df['Ref'].value_counts()
-#convert from concatenated strings to integers
-df['H_Red'] = df['H_Red'].astype(int)
-df['A_Red'] = df['A_Red'].astype(int)
-#create new column total reds cards per match
-df["Ttl_Mtch_Red"] = df[['H_Red', 'A_Red']].sum(axis=1)
-#find which referees gave most red cards
-ref_red_cards = df.groupby('Ref')['Ttl_Mtch_Red'].sum()
-#find out which referee gives the most cards per game
-ref_redcards_permatch = ref_red_cards / referee_appearances
-# most to least
-ref_redcards_permatch_desc = ref_redcards_permatch.sort_values(ascending=False)
-topfour_most_red_card_refs = ref_redcards_permatch_desc.head(4)
-#print top 4
-print("Tactical Question 1")
-print("Our players need to be particularly careful with the four referees below to avoid red cards")
-print("Fouls while on second yellow cards should be particularly avoided with:")
-print(topfour_most_red_card_refs)
-#work out relationship between match result at half-time, result at full time
-#number of games in a season
-total_matches = len(df)
-#number of matches where result is same at full time as it was at half time
-same_match_result = len(df[df['HT_Result'] == df['FT_Result']])
-same_result_percentage = (same_match_result / total_matches) * 100
-print(" ")
-print("Tactical Question 2")
-print("Considerations for resting players if winning at half time.")
-print(f"{same_match_result} of the premier league games finished with the same result at half time and full time.")
-print(f"The likelihood that the match result at full time will be the same as the result at half time is: {same_result_percentage}%.")
-#find the number of games where away team winning at half time wins
-away_team_win_both_halfs = df[(df['HT_Result'] == 'A') & (df['FT_Result'] == 'A')]
-away_team_win_first_half_only = df[(df['HT_Result'] == 'A') & (df['FT_Result'] != 'A')]
-count_away_team_win_both_halves = len(away_team_win_both_halfs)
-count_away_team_win_first_half_only = len(away_team_win_first_half_only)
-#calculate games being won by away team at half, irregardless of second half result - combine
-away_wins_first_half = count_away_team_win_first_half_only + count_away_team_win_both_halves
-#calculate percentage of away team conversions
-second_half_away_conversion_rate = (count_away_team_win_both_halves / away_wins_first_half) * 100
-print(f"When winning at half time, the away team went on to secure victory in {second_half_away_conversion_rate:.2f}% of games.")
+
 #check second dataset accessible in terminal
 datasettwo = SHEET.worksheet('Sheet2')
 data_two = datasettwo.get_all_values()
@@ -84,6 +45,41 @@ df_two.columns = ['team', 'category', 'league_pos', 'games_televised', 'fin_tv_r
 'att_goals_headed', 'att_goals_pen', 'att_goals_box', 'att_goals_outsidebox', 'total_yellow_cards', 'total_red_cards',
 'att_goals_counter', 'att_goals_freekick', 'def_saves', 'def_blocks', 'def_intercept', 'def_tackles', 'def_tackles_last_man',
 'def_clearances', 'def_headed_clearances', 'def_penalty_conceded', 'att_poss', 'pass_acc']
+
+#variables for Tactical Question 1
+#count referee appearances to begin working out which referee gives out most cards
+referee_appearances = df['Ref'].value_counts()
+#convert from concatenated strings to integers
+df['H_Red'] = df['H_Red'].astype(int)
+df['A_Red'] = df['A_Red'].astype(int)
+#create new column total reds cards per match
+df["Ttl_Mtch_Red"] = df[['H_Red', 'A_Red']].sum(axis=1)
+#find which referees gave most red cards
+ref_red_cards = df.groupby('Ref')['Ttl_Mtch_Red'].sum()
+#find out which referee gives the most cards per game
+ref_redcards_permatch = ref_red_cards / referee_appearances
+# most to least
+ref_redcards_permatch_desc = ref_redcards_permatch.sort_values(ascending=False)
+topfour_most_red_card_refs = ref_redcards_permatch_desc.head(4)
+
+#variables for Tactical Question 2
+#work out relationship between match result at half-time, result at full time
+#number of games in a season
+total_matches = len(df)
+#number of matches where result is same at full time as it was at half time
+same_match_result = len(df[df['HT_Result'] == df['FT_Result']])
+same_result_percentage = (same_match_result / total_matches) * 100
+#find the number of games where away team winning at half time wins
+away_team_win_both_halfs = df[(df['HT_Result'] == 'A') & (df['FT_Result'] == 'A')]
+away_team_win_first_half_only = df[(df['HT_Result'] == 'A') & (df['FT_Result'] != 'A')]
+count_away_team_win_both_halves = len(away_team_win_both_halfs)
+count_away_team_win_first_half_only = len(away_team_win_first_half_only)
+#calculate games being won by away team at half, irregardless of second half result - combine
+away_wins_first_half = count_away_team_win_first_half_only + count_away_team_win_both_halves
+#calculate percentage of away team conversions
+second_half_away_conversion_rate = (count_away_team_win_both_halves / away_wins_first_half) * 100
+
+# Variables for Tactical Question 3
 #remove commmas in the two columsn to perform mathematical operations
 df_two['total_passes'] = df_two['total_passes'].str.replace(',', '')
 df_two['total_passes_long'] = df_two['total_passes_long'].str.replace(',', '')
@@ -96,21 +92,31 @@ df_two['ratio_long_passes'] = df_two['total_passes_long'] / df_two['total_passes
 df_two['perc_long_passes'] = df_two['ratio_long_passes'] * 100
 #create separate dataframe of just team and their percentage of long balls
 style_of_passing = df_two[['team', 'perc_long_passes']].sort_values(by='perc_long_passes', ascending=False)
-print(" ")
-print("Tactical Question 3")
-print("Which teams are most reliant on long ball passes in their style of play?")
-print("The following teams are most reliant on long balls in possession:")
-print(style_of_passing.head(5))
-print("The manager should consider relying on our most accomplished aerial players for these games, to deal with the higher reliance on long balls.")
+
+
+def question_1():
+    #print top 4
+    print("Tactical Question 1")
+    print("Our players need to be particularly careful with the four referees below to avoid red cards")
+    print("Fouls while on second yellow cards should be particularly avoided with:")
+    print(topfour_most_red_card_refs)
+
+def question_2():
+    print("Tactical Question 2")
+    print("Considerations for resting players if winning at half time.")
+    print(f"{same_match_result} of the premier league games finished with the same result at half time and full time.")
+    print(f"The likelihood that the match result at full time will be the same as the result at half time is: {same_result_percentage}%.")
+    print(f"When winning at half time, the away team went on to secure victory in {second_half_away_conversion_rate:.2f}% of games.")
+
+def question_3():
+    print("Tactical Question 3")
+    print("Which teams are most reliant on long ball passes in their style of play?")
+    print("The following teams are most reliant on long balls in possession:")
+    print(style_of_passing.head(5))
+    print("The manager should consider relying on our most accomplished aerial players for these games, to deal with the opposition's higher reliance on long balls.")
+
+# tactical question 4
 #calculate which team most reliant on counter attacks, or quick transitions
-
-
-#add line space for clarity
-print(" ")
-print("Please enter one of the team names below to get a short summary of their tactical profile. ")
-print("Manchester City, Liverpool, Chelsea, Tottenham, Arsenal, Manchester United, Wolverhampton, Everton, Leicester,")
-print("West Ham, Watford, Crystal Palace, Newcastle, Bournemouth, Burnley, Southampton, Brighton, Cardiff, Fulham, Huddersfield")
-print("for example: Manchester United")
 
 def team_profile():
     # user to select team for short tactical breakdown
@@ -122,5 +128,6 @@ def team_profile():
     chosen_team = input("Enter a team here: ")
     print(f"The team requested is {chosen_team}")
 
-team_profile()
-# def main ()
+#team_profile()
+#def main ()
+question_3()
