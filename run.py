@@ -44,7 +44,7 @@ ref_redcards_permatch = ref_red_cards / referee_appearances
 ref_redcards_permatch_desc = ref_redcards_permatch.sort_values(ascending=False)
 topfour_most_red_card_refs = ref_redcards_permatch_desc.head(4)
 #print top 4
-print("Question 1")
+print("Tactical Question 1")
 print("Our players need to be particularly careful with the four referees below to avoid red cards")
 print("Fouls while on second yellow cards should be particularly avoided with:")
 print(topfour_most_red_card_refs)
@@ -55,7 +55,7 @@ total_matches = len(df)
 same_match_result = len(df[df['HT_Result'] == df['FT_Result']])
 same_result_percentage = (same_match_result / total_matches) * 100
 print(" ")
-print("Question 2")
+print("Tactical Question 2")
 print("Considerations for resting players if winning at half time.")
 print(f"{same_match_result} of the premier league games finished with the same result at half time and full time.")
 print(f"The likelihood that the match result at full time will be the same as the result at half time is: {same_result_percentage}%.")
@@ -97,18 +97,30 @@ df_two['perc_long_passes'] = df_two['ratio_long_passes'] * 100
 #create separate dataframe of just team and their percentage of long balls
 style_of_passing = df_two[['team', 'perc_long_passes']].sort_values(by='perc_long_passes', ascending=False)
 print(" ")
-print("Question 3")
+print("Tactical Question 3")
 print("Which teams are most reliant on long ball passes in their style of play?")
 print("The following teams are most reliant on long balls in possession:")
 print(style_of_passing.head(5))
-print("The manager should consider relying on our most accomplished aerial players for these games, to deal with the higher reliance on long balls")
+print("The manager should consider relying on our most accomplished aerial players for these games, to deal with the higher reliance on long balls.")
+#calculate which team most reliant on counter attacks, or quick transitions
+
+
 #add line space for clarity
 print(" ")
 print("Please enter one of the team names below to get a short summary of their tactical profile. ")
 print("Manchester City, Liverpool, Chelsea, Tottenham, Arsenal, Manchester United, Wolverhampton, Everton, Leicester,")
 print("West Ham, Watford, Crystal Palace, Newcastle, Bournemouth, Burnley, Southampton, Brighton, Cardiff, Fulham, Huddersfield")
+print("for example: Manchester United")
 
-# def team_profile(team):
+def team_profile():
+    # user to select team for short tactical breakdown
+    print(" ")
+    print("Please enter one of the team names below to get a short summary of their tactical profile. ")
+    print("Manchester City, Liverpool, Chelsea, Tottenham, Arsenal, Manchester United, Wolverhampton, Everton, Leicester,")
+    print("West Ham, Watford, Crystal Palace, Newcastle, Bournemouth, Burnley, Southampton, Brighton, Cardiff, Fulham, Huddersfield")
+    print("eg: Manchester United")
+    chosen_team = input("Enter a team here: ")
+    print(f"The team requested is {chosen_team}")
 
-
+team_profile()
 # def main ()
