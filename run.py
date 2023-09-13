@@ -103,6 +103,14 @@ df_two['perc_long_passes'] = df_two['ratio_long_passes'] * 100
 #create separate dataframe of just team and their percentage of long balls
 style_of_passing = df_two[['team', 'perc_long_passes']].sort_values(by='perc_long_passes', ascending=False)
 
+# Variables for Tactical Question 4
+#first convert to int
+#find out which teams were most reliant on counter attacks as a proportion of their total goals
+df_two['att_goals_counter'] = df_two['att_goals_counter'].astype(int)
+df_two['goals_scored'] = df_two['goals_scored'].astype(int)
+df_two['counter_attack_goal_perc'] = (df_two['att_goals_counter'] / df_two['goals_scored']) * 100
+print(df_two['counter_attack_goal_perc'])
+
 def question_1():
     #function to show the results of the data analysis of tactical question 1
     print("Tactical Question 1")
@@ -143,6 +151,8 @@ def team_profile():
 
 #team_profile()
 #def main ()
+
+
 
 
 
