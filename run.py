@@ -46,7 +46,7 @@ df_two.columns = ['team', 'category', 'league_pos', 'games_televised', 'fin_tv_r
 'att_goals_counter', 'att_goals_freekick', 'def_saves', 'def_blocks', 'def_intercept', 'def_tackles', 'def_tackles_last_man',
 'def_clearances', 'def_headed_clearances', 'def_penalty_conceded', 'att_poss', 'pass_acc']
 
-#variables for Tactical Question 1
+#Variables for Tactical Question 1
 #count referee appearances to begin working out which referee gives out most cards
 referee_appearances = df['Ref'].value_counts()
 #convert from concatenated strings to integers
@@ -62,7 +62,7 @@ ref_redcards_permatch = ref_red_cards / referee_appearances
 ref_redcards_permatch_desc = ref_redcards_permatch.sort_values(ascending=False)
 topfour_most_red_card_refs = ref_redcards_permatch_desc.head(4)
 
-#variables for Tactical Question 2
+#Variables for Tactical Question 2
 #work out relationship between match result at half-time, result at full time
 #number of games in a season
 total_matches = len(df)
@@ -78,6 +78,16 @@ count_away_team_win_first_half_only = len(away_team_win_first_half_only)
 away_wins_first_half = count_away_team_win_first_half_only + count_away_team_win_both_halves
 #calculate percentage of away team conversions
 second_half_away_conversion_rate = (count_away_team_win_both_halves / away_wins_first_half) * 100
+#SAME ANALYSIS ON HOME TEAM
+#find the number of games where home team winning at half time wins
+home_team_win_both_halfs = df[(df['HT_Result'] == 'H') & (df['FT_Result'] == 'H')]
+home_team_win_first_half_only = df[(df['HT_Result'] == 'H') & (df['FT_Result'] != 'H')]
+count_home_team_win_both_halves = len(home_team_win_both_halfs)
+count_home_team_win_first_half_only = len(home_team_win_first_half_only)
+#calculate games being won by home team at half, irregardless of second half result and combine results
+home_wins_first_half = count_home_team_win_first_half_only + count_home_team_win_both_halves
+#calculate percentage of home team conversions
+second_half_home_conversion_rate = (count_home_team_win_both_halves / home_wins_first_half) * 100
 
 # Variables for Tactical Question 3
 #remove commmas in the two columsn to perform mathematical operations
@@ -93,22 +103,25 @@ df_two['perc_long_passes'] = df_two['ratio_long_passes'] * 100
 #create separate dataframe of just team and their percentage of long balls
 style_of_passing = df_two[['team', 'perc_long_passes']].sort_values(by='perc_long_passes', ascending=False)
 
-
 def question_1():
-    #print top 4
+    #function to show the results of the data analysis of tactical question 1
     print("Tactical Question 1")
-    print("Our players need to be particularly careful with the four referees below to avoid red cards")
+    print("Our players need to be particularly careful with the four referees noted below to avoid red cards")
     print("Fouls while on second yellow cards should be particularly avoided with:")
     print(topfour_most_red_card_refs)
 
 def question_2():
+    #function to show the results of the data analysis of tactical question 2
     print("Tactical Question 2")
     print("Considerations for resting players if winning at half time.")
     print(f"{same_match_result} of the premier league games finished with the same result at half time and full time.")
     print(f"The likelihood that the match result at full time will be the same as the result at half time is: {same_result_percentage}%.")
     print(f"When winning at half time, the away team went on to secure victory in {second_half_away_conversion_rate:.2f}% of games.")
+    print(f"When winning at half time, the home team went on to secure victory in {second_half_home_conversion_rate:.2f}% of games.")
+    print("If winning at half time, consideration should be given to resting important players, particularly if playing at our home ground.")
 
 def question_3():
+    #function to show the results of the data analysis of tactical question 3
     print("Tactical Question 3")
     print("Which teams are most reliant on long ball passes in their style of play?")
     print("The following teams are most reliant on long balls in possession:")
@@ -130,4 +143,7 @@ def team_profile():
 
 #team_profile()
 #def main ()
-question_3()
+
+
+
+
