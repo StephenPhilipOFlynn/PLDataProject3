@@ -68,7 +68,7 @@ count_away_team_win_first_half_only = len(away_team_win_first_half_only)
 away_wins_first_half = count_away_team_win_first_half_only + count_away_team_win_both_halves
 #calculate percentage of away team conversions
 second_half_away_conversion_rate = (count_away_team_win_both_halves / away_wins_first_half) * 100
-print(f"When winning at half time, the away team went on to secure victory in {second_half_away_conversion_rate}% of games.")
+print(f"When winning at half time, the away team went on to secure victory in {second_half_away_conversion_rate:.2f}% of games.")
 #check second dataset accessible in terminal
 datasettwo = SHEET.worksheet('Sheet2')
 data_two = datasettwo.get_all_values()
