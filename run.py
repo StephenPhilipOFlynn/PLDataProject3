@@ -128,7 +128,7 @@ def team_specifics(team_name):
 
     if not team_info.empty:
         print(f"Tactical info for {team_name}:")
-        print(team_info[['league_pos', 'att_poss', 'pass_acc']])
+        print(team_info[['att_poss', 'pass_acc', 'perc_long_passes', 'counter_attack_goal_perc']])
     else:
         print(f"{team_name}' not found in the data.")
         print("Please check you have entered a team name correctly")
@@ -195,10 +195,17 @@ def tactical_questions():
         elif choose == '4':
             question_4()
         elif choose == '5':
-            team_name = input("Enter the name a team for further tactical information: ")
+            print("We have data from last season regarding the following teams:")
+            print("Manchester City, Liverpool, Chelsea, Tottenham, Arsenal, Manchester United")
+            print("Wolverhampton, Everton, Leicester, West Ham, Watford, Crystal Palace, Newcastle") 
+            print("Bournemouth, Burnley, Southampton, Brighton, Cardiff, Fulham, Huddersfield")
+            print("eg. Manchester United")
+            team_name = input("Please enter the name a team exactly for further tactical information: ")
             team_specifics(team_name)
+        elif choose == '6':
+            print("Bye for now")
         else:
-            print("Invalid choice. Please enter a number from 1 to 5")
+            print("Invalid choice. Please enter a number from 1 to 6")
 
 
 tactical_questions()
