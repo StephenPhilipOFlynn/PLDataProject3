@@ -95,13 +95,15 @@ num_home_team_win_first_half_only = len(h_t_win_first_half_only)
 # Calculate games being won by home team at half time
 home_wins_first_half = num_home_team_win_first_half_only + num_home_team_win_both_halves
 # Calculate percentage of home team conversions
-second_half_home_conversion_rate = (num_home_team_win_both_halves / home_wins_first_half) * 100
+second_half_home_conversion_rate = (
+    (num_home_team_win_both_halves / home_wins_first_half) * 100)
 
 # Variables for Tactical Question 3
 # Remove commmas in the two columns to perform mathematical operations
 df_two['total_passes'] = df_two['total_passes'].str.replace(',', '')
 df_two['total_passes_long'] = df_two['total_passes_long'].str.replace(',', '')
-# Consider what teams most reliant on long passes. we will compare long passes to total passes for this purpose
+# Consider what teams most reliant on long passes. 
+# We will compare long passes to total passes for this purpose
 # First convert values to integers
 df_two['total_passes_long'] = df_two['total_passes_long'].astype(int)
 df_two['total_passes'] = df_two['total_passes'].astype(int)
@@ -118,6 +120,18 @@ df_two['att_goals_counter'] = df_two['att_goals_counter'].astype(int)
 df_two['goals_scored'] = df_two['goals_scored'].astype(int)
 df_two['counter_attack_goal_perc'] = (df_two['att_goals_counter'] / df_two['goals_scored']) * 100
 most_counterattacking_teams = df_two.sort_values(by='counter_attack_goal_perc', ascending=False).head(5)
+
+
+def team_specifics(team_name):
+    """Retrieve tactical info for specific team"""
+    team_info = df_two[df_two['team'] == team_name]
+
+    if not team_info.empty:
+        print(f"Tactical info for {team_name}:")
+        print(team_info[['league_pos', 'att_poss', 'pass_acc']])
+    else:
+        print(f"{team_name}' not found in the data.")
+        print("Please check you have entered a team name correctly")
 
 
 def question_1():
@@ -163,13 +177,14 @@ def tactical_questions():
         print(" ")
         print("Tactical analysis 2018/2019 Premier League Season")
         print("Hello and welcome. Please choose a tactical question to see the analysis")
-        print("1. Referees that are most likely to give red cards")
+        print("1. Referees that are most likely to give red cards.")
         print("2. Considerations for resting players if winning at half time.")
         print("3. Which teams are most reliant on long ball passes in their style of play?")
         print("4. Which teams are most reliant on counter attacking goals in their style of play?")
-        print("5. Reset")
+        print("5. Show tactical information about a specific team.")
+        print("6. Reset")
 
-        choose = input("Enter the number of the question to choose or enter 5 to exit: (eg. '1')")
+        choose = input("Enter the number of the question to choose or enter 6 to exit: (eg. '1')")
 
         if choose == '1':
             question_1()
@@ -180,23 +195,15 @@ def tactical_questions():
         elif choose == '4':
             question_4()
         elif choose == '5':
-            print("Thank you and goodbye")
+            team_name = input("Enter the name a team for further tactical information: ")
+            team_specifics(team_name)
         else:
             print("Invalid choice. Please enter a number from 1 to 5")
 
 
 tactical_questions()
 
-#def team_profile():
-# print("Please enter one of the team names below to get a short summary of their tactical profile. ")
- #   print("Manchester City, Liverpool, Chelsea, Tottenham, Arsenal, Manchester United, Wolverhampton, Everton, Leicester,")
-  #  print("West Ham, Watford, Crystal Palace, Newcastle, Bournemouth, Burnley, Southampton, Brighton, Cardiff, Fulham, Huddersfield")
-   # print("eg: Manchester United")
-    #chosen_team = input("Enter a team here: ")
-    #print(f"The team requested is {chosen_team}")
 
-#team_profile()
-#def main ()
 
 
 
