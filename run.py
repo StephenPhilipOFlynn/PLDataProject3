@@ -75,27 +75,27 @@ total_matches = len(df)
 same_match_result = len(df[df['HT_Result'] == df['FT_Result']])
 same_result_percentage = (same_match_result / total_matches) * 100
 # Find the number of games where away team winning at half time wins
-away_team_win_both_halfs = df[(df['HT_Result'] == 'A') & (df['FT_Result'] == 'A')]
+away_t_w_both_halfs = df[(df['HT_Result'] == 'A') & (df['FT_Result'] == 'A')]
 away_team_win_first_half_only = df[(df['HT_Result'] == 'A') & (df['FT_Result'] != 'A')]
-count_away_team_win_both_halves = len(away_team_win_both_halfs)
-count_away_team_win_first_half_only = len(away_team_win_first_half_only)
+num_away_t_w_both_halves = len(away_t_w_both_halfs)
+num_away_team_win_first_half_only = len(away_team_win_first_half_only)
 # Calculate games being won by away team at half, irregardless of second half result - combine
 away_wins_first_half = (
-    count_away_team_win_first_half_only + count_away_team_win_both_halves)
+    num_away_team_win_first_half_only + num_away_t_w_both_halves)
 # Calculate percentage of away team conversions
 second_half_away_conversion_rate = (
-    (count_away_team_win_both_halves / away_wins_first_half) * 100)
+    (num_away_t_w_both_halves / away_wins_first_half) * 100)
 
 # Same analysis on home team performances
 # Find the number of games where home team winning at half time wins
 h_t_win_both_halfs = df[(df['HT_Result'] == 'H') & (df['FT_Result'] == 'H')]
 h_t_win_first_half_only = df[(df['HT_Result'] == 'H') & (df['FT_Result'] != 'H')]
-count_home_team_win_both_halves = len(h_t_win_both_halfs)
-count_home_team_win_first_half_only = len(h_t_win_first_half_only)
-# Calculate games being won by home team at half, irregardless of second half result and combine results
-home_wins_first_half = count_home_team_win_first_half_only + count_home_team_win_both_halves
+num_home_team_win_both_halves = len(h_t_win_both_halfs)
+num_home_team_win_first_half_only = len(h_t_win_first_half_only)
+# Calculate games being won by home team at half time
+home_wins_first_half = num_home_team_win_first_half_only + num_home_team_win_both_halves
 # Calculate percentage of home team conversions
-second_half_home_conversion_rate = (count_home_team_win_both_halves / home_wins_first_half) * 100
+second_half_home_conversion_rate = (num_home_team_win_both_halves / home_wins_first_half) * 100
 
 # Variables for Tactical Question 3
 # Remove commmas in the two columns to perform mathematical operations
