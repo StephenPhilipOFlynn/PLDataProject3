@@ -100,7 +100,7 @@ df_two['total_passes'] = df_two['total_passes'].astype(int)
 # divide long passes by total passes for each team
 df_two['ratio_long_passes'] = df_two['total_passes_long'] / df_two['total_passes']
 df_two['perc_long_passes'] = df_two['ratio_long_passes'] * 100
-#create separate dataframe of just team and their percentage of long balls
+# create separate dataframe of just team and their percentage of long balls
 style_of_passing = df_two[['team', 'perc_long_passes']].sort_values(by='perc_long_passes', ascending=False)
 
 # Variables for Tactical Question 4
@@ -112,14 +112,15 @@ df_two['counter_attack_goal_perc'] = (df_two['att_goals_counter'] / df_two['goal
 most_counterattacking_teams = df_two.sort_values(by='counter_attack_goal_perc', ascending=False).head(5)
 
 def question_1():
-    #function to show the results of the data analysis of tactical question 1
+    # function to show the results of the data analysis of tactical question 1
     print("Tactical Question 1")
     print("Our players need to be particularly careful with the four referees noted below to avoid red cards")
     print("Overly aggressive play and f5ouls while on second yellow cards should be particularly avoided with:")
     print(topfour_most_red_card_refs)
 
+
 def question_2():
-    #function to show the results of the data analysis of tactical question 2
+    # function to show the results of the data analysis of tactical question 2
     print("Tactical Question 2")
     print("Considerations for resting players if winning at half time.")
     print(f"{same_match_result} of the premier league games finished with the same result at half time and full time.")
@@ -128,20 +129,23 @@ def question_2():
     print(f"When winning at half time, the home team went on to secure victory in {second_half_home_conversion_rate:.2f}% of games.")
     print("If winning at half time, consideration should be given to resting important players, particularly if playing at our home ground.")
 
+
 def question_3():
-    #function to show the results of the data analysis of tactical question 3
+    # function to show the results of the data analysis of tactical question 3
     print("Tactical Question 3")
     print("Which teams are most reliant on long ball passes in their style of play?")
     print("The following teams are most reliant on long balls in possession:")
     print(style_of_passing.head(5))
     print("The manager should consider relying on our most accomplished aerial players for these games, to deal with the opposition's higher reliance on long balls.")
 
+
 def question_4():
-    #funtion to show the results of the data analysis of tactical question 4
+    # funtion to show the results of the data analysis of tactical question 4
     print("Tactical Question 4")
     print("Which teams are most reliant on counter attacking goals in their style of play?")
     print("The following teams are most reliant on counter attacks to score goals:")
     print(most_counterattacking_teams[['team', 'counter_attack_goal_perc']])
+
 
 def tactical_questions():
     while True:
