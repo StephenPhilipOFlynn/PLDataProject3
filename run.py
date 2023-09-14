@@ -109,7 +109,7 @@ style_of_passing = df_two[['team', 'perc_long_passes']].sort_values(by='perc_lon
 df_two['att_goals_counter'] = df_two['att_goals_counter'].astype(int)
 df_two['goals_scored'] = df_two['goals_scored'].astype(int)
 df_two['counter_attack_goal_perc'] = (df_two['att_goals_counter'] / df_two['goals_scored']) * 100
-print(df_two['counter_attack_goal_perc'])
+most_counterattacking_teams = df_two.sort_values(by='counter_attack_goal_perc', ascending=False).head(5)
 
 def question_1():
     #function to show the results of the data analysis of tactical question 1
@@ -136,18 +136,25 @@ def question_3():
     print(style_of_passing.head(5))
     print("The manager should consider relying on our most accomplished aerial players for these games, to deal with the opposition's higher reliance on long balls.")
 
+def question_4():
+    #fucntion to show the results of the data analysis of tactical question 4
+    print("Tactical Question 4")
+    print("Which teams are most reliant on counter attacking goals in their style of play?")
+    print("The following teams are most reliant on counter attacks for score goals:")
+    print(most_counterattacking_teams[['team', 'counter_attack_goal_perc']])
+
+question_4()
+
 # tactical question 4
 #calculate which team most reliant on counter attacks, or quick transitions
 
-def team_profile():
-    # user to select team for short tactical breakdown
-    print(" ")
-    print("Please enter one of the team names below to get a short summary of their tactical profile. ")
-    print("Manchester City, Liverpool, Chelsea, Tottenham, Arsenal, Manchester United, Wolverhampton, Everton, Leicester,")
-    print("West Ham, Watford, Crystal Palace, Newcastle, Bournemouth, Burnley, Southampton, Brighton, Cardiff, Fulham, Huddersfield")
-    print("eg: Manchester United")
-    chosen_team = input("Enter a team here: ")
-    print(f"The team requested is {chosen_team}")
+#def team_profile():
+# print("Please enter one of the team names below to get a short summary of their tactical profile. ")
+ #   print("Manchester City, Liverpool, Chelsea, Tottenham, Arsenal, Manchester United, Wolverhampton, Everton, Leicester,")
+  #  print("West Ham, Watford, Crystal Palace, Newcastle, Bournemouth, Burnley, Southampton, Brighton, Cardiff, Fulham, Huddersfield")
+   # print("eg: Manchester United")
+    #chosen_team = input("Enter a team here: ")
+    #print(f"The team requested is {chosen_team}")
 
 #team_profile()
 #def main ()
