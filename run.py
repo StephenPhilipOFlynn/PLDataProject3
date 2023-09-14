@@ -115,7 +115,7 @@ def question_1():
     #function to show the results of the data analysis of tactical question 1
     print("Tactical Question 1")
     print("Our players need to be particularly careful with the four referees noted below to avoid red cards")
-    print("Fouls while on second yellow cards should be particularly avoided with:")
+    print("Overly aggressive play and f5ouls while on second yellow cards should be particularly avoided with:")
     print(topfour_most_red_card_refs)
 
 def question_2():
@@ -137,16 +137,47 @@ def question_3():
     print("The manager should consider relying on our most accomplished aerial players for these games, to deal with the opposition's higher reliance on long balls.")
 
 def question_4():
-    #fucntion to show the results of the data analysis of tactical question 4
+    #funtion to show the results of the data analysis of tactical question 4
     print("Tactical Question 4")
     print("Which teams are most reliant on counter attacking goals in their style of play?")
-    print("The following teams are most reliant on counter attacks for score goals:")
+    print("The following teams are most reliant on counter attacks to score goals:")
     print(most_counterattacking_teams[['team', 'counter_attack_goal_perc']])
 
-question_4()
 
-# tactical question 4
-#calculate which team most reliant on counter attacks, or quick transitions
+def tactical_questions():
+    while True:
+        print(" ")
+        print("Tactical analysis 2018/2019 Premier League Season")
+        print("Hello and welcome. Please choose a tactical question to see the analysis")
+        print("1. Referees that are most likely to give red cards")
+        print("2. Considerations for resting players if winning at half time.")
+        print("3. Which teams are most reliant on long ball passes in their style of play?")
+        print("4. Which teams are most reliant on counter attacking goals in their style of play?")
+        print("5. Reset")
+
+        choose = input("Enter the number of the question to choose or 5 to quit: (eg. '1')")
+
+        if choose == '1':
+            question_1()
+        elif choose == '2':
+            question_2()
+        elif choose == '3':
+            question_3()
+        elif choose == '4':
+            question_4()
+        elif choose == '5':
+            print("Thank you and goodbye")
+        else:
+            print("Invalid choice. Please enter a number from 1 to 4")
+
+
+tactical_questions()
+
+
+
+
+
+
 
 #def team_profile():
 # print("Please enter one of the team names below to get a short summary of their tactical profile. ")
