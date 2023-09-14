@@ -26,9 +26,10 @@ df = pd.DataFrame(data)
 # skip row 1 with includes spreadsheet titles
 df = df.iloc[1:]
 # rename columns to access data correctly in dataframe sheet 1
-df.columns = ['Div', 'Date', 'H_Team', 'A_Team', 'FT_H_Gls', 'FT_A_Gls', 
-'FT_Result', 'HT_H_Gls', 'HT_A_Gls', 'HT_Result', 'Ref', 'H_Shts', 'A_Shts', 'H_Shts_Trgt', 
-'A_Shts_Trgt', 'H_Fouls', 'A_Fouls', 'H_Corners', 'A_Corners', 'H_Yellow', 'A_Yellow', 'H_Red', 'A_Red']
+df.columns = ['Div', 'Date', 'H_Team', 'A_Team', 'FT_H_Gls', 'FT_A_Gls',
+'FT_Result', 'HT_H_Gls', 'HT_A_Gls', 'HT_Result', 'Ref', 'H_Shts', 'A_Shts',
+'H_Shts_Trgt', 'A_Shts_Trgt', 'H_Fouls', 'A_Fouls', 'H_Corners',
+'A_Corners', 'H_Yellow', 'A_Yellow', 'H_Red', 'A_Red']
 
 # check second dataset accessible in terminal
 datasettwo = SHEET.worksheet('Sheet2')
@@ -38,16 +39,21 @@ df_two = pd.DataFrame(data_two)
 # remove first row with titles for data manipulation
 df_two = df_two.iloc[1:]
 # rename columns in second dataset for dataframe
-df_two.columns = ['team', 'category', 'league_pos', 'games_televised', 'fin_tv_revenue', 'matches_played', 
-'games_won', 'games_drawn', 'general_lost', 'goals_scored', 'goals_conceded', 'total_goal_diff', 'total_points', 'squad_size', 'squad_aver_age', 
-'squad_overseas', 'fin_team_market', 'fin_market_average', 'total_passes',
-'att_passes_through', 'total_passes_long', 'att_passes_back', 'att_crosses', 'attack_corners', 'total_shots', 'total_shots_on_target',
-'att_goals_headed', 'att_goals_pen', 'att_goals_box', 'att_goals_outsidebox', 'total_yellow_cards', 'total_red_cards',
-'att_goals_counter', 'att_goals_freekick', 'def_saves', 'def_blocks', 'def_intercept', 'def_tackles', 'def_tackles_last_man',
-'def_clearances', 'def_headed_clearances', 'def_penalty_conceded', 'att_poss', 'pass_acc']
+df_two.columns = ['team', 'category', 'league_pos', 'games_televised', 'fin_tv_revenue',
+'matches_played', 'games_won', 'games_drawn', 'general_lost',
+'goals_scored', 'goals_conceded', 'total_goal_diff', 'total_points',
+'squad_size', 'squad_aver_age', 'squad_overseas', 'fin_team_market',
+'fin_market_average', 'total_passes',
+'att_passes_through', 'total_passes_long', 'att_passes_back', 'att_crosses',
+'attack_corners', 'total_shots', 'total_shots_on_target',
+'att_goals_headed', 'att_goals_pen', 'att_goals_box', 'att_goals_outsidebox',
+'total_yellow_cards', 'total_red_cards', 'att_goals_counter',
+'att_goals_freekick', 'def_saves', 'def_blocks', 'def_intercept',
+'def_tackles', 'def_tackles_last_man', 'def_clearances', 
+'def_headed_clearances', 'def_penalty_conceded', 'att_poss', 'pass_acc']
 
 # Variables for Tactical Question 1
-# count referee appearances to begin working out which referee gives out most cards
+# first count referee appearances
 referee_appearances = df['Ref'].value_counts()
 # convert from concatenated strings to integers
 df['H_Red'] = df['H_Red'].astype(int)
@@ -112,7 +118,9 @@ df_two['counter_attack_goal_perc'] = (df_two['att_goals_counter'] / df_two['goal
 most_counterattacking_teams = df_two.sort_values(by='counter_attack_goal_perc', ascending=False).head(5)
 
 def question_1():
-    # function to show the results of the data analysis of tactical question 1
+    """
+    Display calculations from question 1
+    """
     print("Tactical Question 1")
     print("Our players need to be particularly careful with the four referees noted below to avoid red cards")
     print("Overly aggressive play and f5ouls while on second yellow cards should be particularly avoided with:")
@@ -120,7 +128,9 @@ def question_1():
 
 
 def question_2():
-    # function to show the results of the data analysis of tactical question 2
+    """
+    Display calculations from question 2
+    """
     print("Tactical Question 2")
     print("Considerations for resting players if winning at half time.")
     print(f"{same_match_result} of the premier league games finished with the same result at half time and full time.")
@@ -131,7 +141,9 @@ def question_2():
 
 
 def question_3():
-    # function to show the results of the data analysis of tactical question 3
+    """
+    Display calculations from question 3
+    """
     print("Tactical Question 3")
     print("Which teams are most reliant on long ball passes in their style of play?")
     print("The following teams are most reliant on long balls in possession:")
@@ -140,7 +152,9 @@ def question_3():
 
 
 def question_4():
-    # funtion to show the results of the data analysis of tactical question 4
+    """
+    Display calculations from question 4
+    """
     print("Tactical Question 4")
     print("Which teams are most reliant on counter attacking goals in their style of play?")
     print("The following teams are most reliant on counter attacks to score goals:")
@@ -148,6 +162,9 @@ def question_4():
 
 
 def tactical_questions():
+    """
+    Begins programme ask user to select choice
+    """
     while True:
         print(" ")
         print("Tactical analysis 2018/2019 Premier League Season")
@@ -175,12 +192,6 @@ def tactical_questions():
 
 
 tactical_questions()
-
-
-
-
-
-
 
 #def team_profile():
 # print("Please enter one of the team names below to get a short summary of their tactical profile. ")
