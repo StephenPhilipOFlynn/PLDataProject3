@@ -95,7 +95,8 @@ second_half_away_conversion_rate = (
 # Find the number of games where home team winning at half time wins
 h_t_win_both_halfs = df[(df['HT_Result'] == 'H') &
                         (df['FT_Result'] == 'H')]
-h_t_win_first_half_only = df[(df['HT_Result'] == 'H') & (df['FT_Result'] != 'H')]
+h_t_win_first_half_only = df[(df['HT_Result'] == 'H') &
+                             (df['FT_Result'] != 'H')]
 num_home_team_win_both_halves = len(h_t_win_both_halfs)
 num_home_team_win_first_half_only = len(h_t_win_first_half_only)
 # Calculate games being won by home team at half time
@@ -115,14 +116,15 @@ df_two['total_passes_long'] = df_two['total_passes_long'].str.replace(',', '')
 df_two['total_passes_long'] = df_two['total_passes_long'].astype(int)
 df_two['total_passes'] = df_two['total_passes'].astype(int)
 # Divide long passes by total passes for each team
-df_two['ratio_long_passes'] = df_two['total_passes_long'] / df_two['total_passes']
+df_two['ratio_long_passes'] = (
+    df_two['total_passes_long'] / df_two['total_passes'])
 df_two['perc_long_passes'] = df_two['ratio_long_passes'] * 100
 # Create separate dataframe of just team and their percentage of long balls
 style_of_passing = df_two[['team', 'perc_long_passes']].sort_values(by='perc_long_passes', ascending=False)
 
 # Variables for Tactical Question 4
 # First convert to integer
-# Find out which teams were most reliant on counter attacks proportionate to total goals
+# Which teams are reliant on counter attacks proportionate to total goals
 df_two['att_goals_counter'] = df_two['att_goals_counter'].astype(int)
 df_two['goals_scored'] = df_two['goals_scored'].astype(int)
 df_two['counter_attack_goal_perc'] = (df_two['att_goals_counter'] / df_two['goals_scored']) * 100
@@ -135,7 +137,8 @@ def team_specifics(team_name):
 
     if not team_info.empty:
         print(f"Tactical info for {team_name}:")
-        print(team_info[['att_poss', 'pass_acc', 'perc_long_passes', 'counter_attack_goal_perc']])
+        print(team_info[['att_poss', 'pass_acc', 'perc_long_passes',
+                         'counter_attack_goal_perc']])
     else:
         print(f"{team_name}' not found in the data.")
         print("Please check you have entered a team name correctly")
@@ -186,8 +189,8 @@ def main():
         print("Hello and welcome. Please choose a tactical question to see the analysis")
         print("1. Referees that are most likely to give red cards.")
         print("2. Considerations for resting players if winning at half time.")
-        print("3. Which teams are most reliant on long ball passes in their style of play?")
-        print("4. Which teams are reliant on counter attacking goals in their style of play?")
+        print("3. Which teams are most reliant on long ball passes?")
+        print("4. Which teams are reliant on counter attacking goals?")
         print("5. Show tactical information about a specific team.")
         print("6. Reset")
 
@@ -202,12 +205,15 @@ def main():
         elif choose == '4':
             question_4()
         elif choose == '5':
-            print("We have data from last season regarding the following teams:")
-            print("Manchester City, Liverpool, Chelsea, Tottenham, Arsenal, Manchester United")
-            print("Wolverhampton, Everton, Leicester, West Ham, Watford, Crystal Palace, Newcastle")
-            print("Bournemouth, Burnley, Southampton, Brighton, Cardiff, Fulham, Huddersfield")
+            print("We have data from last season regarding these teams:")
+            print("Manchester City, Liverpool, Chelsea, Tottenham, Arsenal")
+            print("Manchester United, Newcastle, Huddersfield, Fulham")
+            print("Wolverhampton, Everton, Leicester, West Ham") 
+            print("Watford, Crystal Palace, Brighton")
+            print("Bournemouth, Burnley, Southampton, Cardiff")
+            print("Type one of them (case sensitive)")
             print("eg. Manchester United")
-            team_name = input("Please enter the name a team exactly (case sensitive): \n")
+            team_name = input("Please enter the name a team exactly: \n")
             team_specifics(team_name)
         elif choose == '6':
             print("Bye for now")
