@@ -1,7 +1,7 @@
 Premier League Tactical Analysis, which runs in the Code Institute mock terminal on Heroku.
 
 Users can look at one of four questions, or alternatively look up a brief tactical profile of each team in the 2018/2019 premier league season.
-The concept of this project is that it is the summer of the 2019 season, and you are the data scientist for a new promoted premier league league team.
+The concept of this project is that it is the summer of the 2019 season, and you are the data scientist for a new promoted premier league team.
 The manager of your team has asked you to provide some insight into four questions they have. 
 
 The four questions are:
@@ -31,7 +31,7 @@ Future Features
 
 Testing
 I have manually tested the project by doing the following:
-- Passed the code through a PEP8 linter and confirmed there are no significant problems.
+- Passed the code through a PEP8 linter and confirmed there are no significant problems. Certain lines are over 79 character limit suggestion by Pep8 but below the 99 character upper maximum it mandates.
 - Tested the app in my local terminal and the Code Institute Heroku terminal.
 
 Bugs
@@ -49,7 +49,7 @@ Steps for deployment:
 Credits
 - Code Institute Love Sandwiches for general guidance, including on linking google sheets, including command line inputs, functions and deployment.
 - Code Institute for the heroku deployment terminal.
-- Datacamp.com for guidance on working with lists and data frames.
+- Datacamp.com for tutorials on working with lists and data frames.
 - Datacamp.com for sample data set 1. Dataset 1 was used for the analysis of conversion of matches if winning at half time, and of referees red card rates.
 - https://app.datacamp.com/workspace/sample-datasets
 - Original source for dataset 1 is quoted as data world.
@@ -57,4 +57,5 @@ Credits
 - Data set 2 was from Kaggle which was used for calculations on playing styles.  This includes the analysis of counter attacks, long balls, and team profiles.
 - https://www.kaggle.com/datasets/thesiff/premierleague1819
 - Pep8 checker - https://www.codewof.co.nz/style/python3/
+- https://peps.python.org/pep-0008/#indentation
 
