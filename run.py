@@ -1,4 +1,4 @@
-"""This file prompts a user to run various calculations on premier league data."""
+"""This file prompts a user to run calculations on premier league data."""
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 import gspread
 from google.oauth2.service_account import Credentials
@@ -72,7 +72,7 @@ ref_redcards_permatch_desc = ref_redcards_permatch.sort_values(ascending=False)
 topfour_most_red_card_refs = ref_redcards_permatch_desc.head(4)
 
 # Variables for Tactical Question 2
-# Work out relationship between match result at half-time, and full time
+# Work out relationship between match result at half-time and full time
 # Number of games in a season
 total_matches = len(df)
 # Number of matches where result is same at full time as it was at half time
@@ -80,7 +80,8 @@ same_match_result = len(df[df['HT_Result'] == df['FT_Result']])
 same_result_percentage = (same_match_result / total_matches) * 100
 # Find the number of games where away team winning at half time wins
 away_t_w_both_halfs = df[(df['HT_Result'] == 'A') & (df['FT_Result'] == 'A')]
-away_team_win_first_half_only = df[(df['HT_Result'] == 'A') & (df['FT_Result'] != 'A')]
+away_team_win_first_half_only = df[(df['HT_Result'] == 'A') &
+                                    (df['FT_Result'] != 'A')]
 num_away_t_w_both_halves = len(away_t_w_both_halfs)
 num_away_team_win_first_half_only = len(away_team_win_first_half_only)
 # Calculate games being won by away team at half time
@@ -92,7 +93,8 @@ second_half_away_conversion_rate = (
 
 # Same analysis on home team performances
 # Find the number of games where home team winning at half time wins
-h_t_win_both_halfs = df[(df['HT_Result'] == 'H') & (df['FT_Result'] == 'H')]
+h_t_win_both_halfs = df[(df['HT_Result'] == 'H') &
+                        (df['FT_Result'] == 'H')]
 h_t_win_first_half_only = df[(df['HT_Result'] == 'H') & (df['FT_Result'] != 'H')]
 num_home_team_win_both_halves = len(h_t_win_both_halfs)
 num_home_team_win_first_half_only = len(h_t_win_first_half_only)
@@ -128,7 +130,7 @@ most_counterattacking_teams = df_two.sort_values(by='counter_attack_goal_perc', 
 
 
 def team_specifics(team_name):
-    """Retrieve tactical info for specific team"""
+    """Retrieve tactical info for specific team."""
     team_info = df_two[df_two['team'] == team_name]
 
     if not team_info.empty:
@@ -143,19 +145,19 @@ def question_1():
     """Display calculations from question 1."""
     print("Tactical Question 1")
     print("Our players need to be particularly careful with these four referees")
-    print("Overly aggressive play and fouls while on second yellow cards should be avoided with:")
+    print("Aggressive play and fouls on second yellow cards should be avoided with:")
     print(topfour_most_red_card_refs)
 
 
 def question_2():
     """Display calculations from question 2."""
     print("Tactical Question 2")
-    print("Considerations for resting players if winning at half time.")
-    print(f"{same_match_result} of the premier league games finished with the same result at half time and full time.")
-    print(f"The likelihood that the match result at full time will be the same as the result at half time is: {same_result_percentage}%.")
-    print(f"When winning at half time, the away team went on to secure victory in {second_half_away_conversion_rate:.2f}% of games.")
-    print(f"When winning at half time, the home team went on to secure victory in {second_half_home_conversion_rate:.2f}% of games.")
-    print("If winning at half time, consideration should be given to resting important players, particularly if playing at our home ground.")
+    print("Considerations for resting players if winning at half time ('HT').")
+    print(f"{same_match_result} of the games finished with the same result at HT and full time.")
+    print(f"The likelihood that the match result at full time will be the same as HT is: {same_result_percentage}%.")
+    print(f"When winning at HT, the away team went on to secure victory in {second_half_away_conversion_rate:.2f}% of games.")
+    print(f"When winning at HT, the home team went on to secure victory in {second_half_home_conversion_rate:.2f}% of games.")
+    print("If winning at HT, consider resting players, particularly if playing at our home ground.")
 
 
 def question_3():
@@ -164,7 +166,7 @@ def question_3():
     print("Which teams are most reliant on long ball passes in their style of play?")
     print("The following teams are most reliant on long balls in possession:")
     print(style_of_passing.head(5))
-    print("The manager should consider relying on our most accomplished aerial players for these games.")
+    print("The manager should consider relying on our best aerial players for these games.")
     print("This may assist in dealing with the opposition's higher reliance on long balls.")
 
 
@@ -176,8 +178,8 @@ def question_4():
     print(most_counterattacking_teams[['team', 'counter_attack_goal_perc']])
 
 
-def tactical_questions():
-    """Begins programme asks user to select choice."""
+def main():
+    """Begins programme and asks user to select choice."""
     while True:
         print(" ")
         print("Tactical analysis 2018/2019 Premier League Season")
@@ -202,7 +204,7 @@ def tactical_questions():
         elif choose == '5':
             print("We have data from last season regarding the following teams:")
             print("Manchester City, Liverpool, Chelsea, Tottenham, Arsenal, Manchester United")
-            print("Wolverhampton, Everton, Leicester, West Ham, Watford, Crystal Palace, Newcastle") 
+            print("Wolverhampton, Everton, Leicester, West Ham, Watford, Crystal Palace, Newcastle")
             print("Bournemouth, Burnley, Southampton, Brighton, Cardiff, Fulham, Huddersfield")
             print("eg. Manchester United")
             team_name = input("Please enter the name a team exactly: ")
@@ -213,8 +215,7 @@ def tactical_questions():
             print("Invalid choice. Please enter a number from 1 to 6")
 
 
-tactical_questions()
-
+main()
 
 
 
