@@ -187,7 +187,7 @@ def main():
         print("1. Referees that are most likely to give red cards.")
         print("2. Considerations for resting players if winning at half time.")
         print("3. Which teams are most reliant on long ball passes in their style of play?")
-        print("4. Which teams are most reliant on counter attacking goals in their style of play?")
+        print("4. Which teams are reliant on counter attacking goals in their style of play?")
         print("5. Show tactical information about a specific team.")
         print("6. Reset")
 
@@ -207,7 +207,7 @@ def main():
             print("Wolverhampton, Everton, Leicester, West Ham, Watford, Crystal Palace, Newcastle")
             print("Bournemouth, Burnley, Southampton, Brighton, Cardiff, Fulham, Huddersfield")
             print("eg. Manchester United")
-            team_name = input("Please enter the name a team exactly: \n")
+            team_name = input("Please enter the name a team exactly (case sensitive): \n")
             team_specifics(team_name)
         elif choose == '6':
             print("Bye for now")
