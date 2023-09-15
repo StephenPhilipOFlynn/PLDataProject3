@@ -49,4 +49,5 @@ Credits
 - https://data.world/chas/2018-2019-premier-league-matches
 - Data set 2 was from Kaggle which was used for calculations on playing styles.  This includes the analysis of counter attacks, long balls, and team profiles.
 - https://www.kaggle.com/datasets/thesiff/premierleague1819
+- Pep8 checker - https://www.codewof.co.nz/style/python3/
 

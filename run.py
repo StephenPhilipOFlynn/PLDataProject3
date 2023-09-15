@@ -68,7 +68,7 @@ ref_redcards_permatch_desc = ref_redcards_permatch.sort_values(ascending=False)
 topfour_most_red_card_refs = ref_redcards_permatch_desc.head(4)
 
 # Variables for Tactical Question 2
-# Work out relationship between match result at half-time, result at full time
+# Work out relationship between match result at half-time, and full time
 # Number of games in a season
 total_matches = len(df)
 # Number of matches where result is same at full time as it was at half time
@@ -79,7 +79,7 @@ away_t_w_both_halfs = df[(df['HT_Result'] == 'A') & (df['FT_Result'] == 'A')]
 away_team_win_first_half_only = df[(df['HT_Result'] == 'A') & (df['FT_Result'] != 'A')]
 num_away_t_w_both_halves = len(away_t_w_both_halfs)
 num_away_team_win_first_half_only = len(away_team_win_first_half_only)
-# Calculate games being won by away team at half, irregardless of second half result - combine
+# Calculate games being won by away team at half time
 away_wins_first_half = (
     num_away_team_win_first_half_only + num_away_t_w_both_halves)
 # Calculate percentage of away team conversions
@@ -200,7 +200,7 @@ def tactical_questions():
             print("Wolverhampton, Everton, Leicester, West Ham, Watford, Crystal Palace, Newcastle") 
             print("Bournemouth, Burnley, Southampton, Brighton, Cardiff, Fulham, Huddersfield")
             print("eg. Manchester United")
-            team_name = input("Please enter the name a team exactly for further tactical information: ")
+            team_name = input("Please enter the name a team exactly: ")
             team_specifics(team_name)
         elif choose == '6':
             print("Bye for now")
