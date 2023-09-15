@@ -81,7 +81,7 @@ same_result_percentage = (same_match_result / total_matches) * 100
 # Find the number of games where away team winning at half time wins
 away_t_w_both_halfs = df[(df['HT_Result'] == 'A') & (df['FT_Result'] == 'A')]
 away_team_win_first_half_only = df[(df['HT_Result'] == 'A') &
-                                    (df['FT_Result'] != 'A')]
+                                   (df['FT_Result'] != 'A')]
 num_away_t_w_both_halves = len(away_t_w_both_halfs)
 num_away_team_win_first_half_only = len(away_team_win_first_half_only)
 # Calculate games being won by away team at half time
@@ -191,7 +191,7 @@ def main():
         print("5. Show tactical information about a specific team.")
         print("6. Reset")
 
-        choose = input("Enter the number of the question to choose or enter 6 to exit: (eg. '1')\n")
+        choose = input("Enter the number of a question to choose or enter 6 to exit: (eg. '1')\n")
 
         if choose == '1':
             question_1()
