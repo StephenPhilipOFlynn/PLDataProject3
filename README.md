@@ -1,7 +1,7 @@
 Premier League Tactical Analysis, which runs in the Code Institute mock terminal on Heroku.
 
-Users can look at one of four preset questions, or alternatively look up a brief tactical profile of each team in the 2018/2019 premier league season.
-The concept is that it is the summer of the 2019 season, and you are the data scientist for a new promoted premier league team.
+Users can look at one of four questions, or alternatively look up a brief tactical profile of each team in the 2018/2019 premier league season.
+The concept of this project is that it is the summer of the 2019 season, and you are the data scientist for a new promoted premier league league team.
 The manager of your team has asked you to provide some insight into four questions they have. 
 
 The four questions are:
@@ -14,6 +14,8 @@ The manager has also asked for a mechanism to show a short tactical overview abo
 
 Features
 - Data is taken from two spreadsheets of premier league football data from the 2018/2019 season.
+- The user is prompted to check 1 of 4 questions, or to press 5 for the tactical summary of a particular team's style of play.
+- Input validation, the user is informed if they have selected a tactical question or team correctly or incorrectly.
 
 Future Features
 - Further tactical questions can be added. For example, an analysis of a team's propensity to cross the ball.
