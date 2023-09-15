@@ -1,32 +1,49 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+Premier League Tactical Analysis, which runs in the Code Institute mock terminal on Heroku.
 
-Welcome,
+Users can look at one of four preset questions, or alternatively look up a brief tactical profile of each team in the 2018/2019 premier league season.
+The concept is that it is the summer of the 2019 season, and you are the data scientist for a new promoted premier league team.
+The manager of your team has asked you to provide some insight into four questions they have. 
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
+The four questions are:
+1. Which referees are most likely to give red cards? Who should our players be particularly careful with to not push the edges of fair play?
+2. If winning a game at half time, what is the likelihood of winning that game? This information could allow the manager to consider resting certain key players during busy periods.
+3. Which teams are most reliant on long ball passes in their style of play? This could influence team selection, favouring players with aerial ability.
+4. Which teams are most reliant on counter attacking goals in their style of play?
 
-## Reminders
+The manager has also asked for a mechanism to show a short tactical overview about each specific team.
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+Features
+- Data is taken from two spreadsheets of premier league football data from the 2018/2019 season.
 
-## Creating the Heroku app
+Future Features
+- Further tactical questions can be added. For example, an analysis of a team's propensity to cross the ball.
+- Further insights could be added to each team profile.
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+Testing
+I have manually tested the project by doing the following:
+- Passed the code through a PEP8 linter and confirmed there are no significant problems
+- Tested in my local terminal and the Code Institute Heroku terminal
 
-1. `heroku/python`
-2. `heroku/nodejs`
+Bugs
+- Certain data fields needed to be cleaned to remove commas in numerical fields, which caused the programme to not correctly run.
+- Some calculations returned incorrect values as concatenated strings. This was caught in testing, and the data turned into floats and integers so that the resulting calculations were correct.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+Deployment
+Steps for deployment:
+- Steps for deployment:
+- Fork or clone this repository
+- Create a new Heroku app
+- Set the build packs to Python and NodeJS in that order
+- Link the Heroku app to the repository
+- Click on deploy
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+Credits
+- Code Institute Love Sandwiches for general guidance, including on linking google sheets, including command line inputs and functions.
+- Datacamp.com for guidance on working with lists and data frames.
+- Datacamp.com for sample data set 1. Dataset 1 was used for the analysis of conversion of matches if winning at half time, and of referees red card rates.
+- https://app.datacamp.com/workspace/sample-datasets
+- Original source for dataset 1 is data world.
+- https://data.world/chas/2018-2019-premier-league-matches
+- Data set 2 was from Kaggle which was used for calculations on playing styles.  This includes the analysis of counter attacks, long balls, and team profiles.
+- https://www.kaggle.com/datasets/thesiff/premierleague1819
 
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
----
-
-Happy coding!
