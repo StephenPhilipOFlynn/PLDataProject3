@@ -191,7 +191,7 @@ def main():
         print("5. Show tactical information about a specific team.")
         print("6. Reset")
 
-        choose = input("Enter the number of the question to choose or enter 6 to exit: (eg. '1')")
+        choose = input("Enter the number of the question to choose or enter 6 to exit: (eg. '1')\n")
 
         if choose == '1':
             question_1()
@@ -207,7 +207,7 @@ def main():
             print("Wolverhampton, Everton, Leicester, West Ham, Watford, Crystal Palace, Newcastle")
             print("Bournemouth, Burnley, Southampton, Brighton, Cardiff, Fulham, Huddersfield")
             print("eg. Manchester United")
-            team_name = input("Please enter the name a team exactly: ")
+            team_name = input("Please enter the name a team exactly: \n")
             team_specifics(team_name)
         elif choose == '6':
             print("Bye for now")
