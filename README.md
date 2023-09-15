@@ -29,8 +29,8 @@ Future Features
 
 Testing
 I have manually tested the project by doing the following:
-- Passed the code through a PEP8 linter and confirmed there are no significant problems
-- Tested in my local terminal and the Code Institute Heroku terminal
+- Passed the code through a PEP8 linter and confirmed there are no significant problems.
+- Tested the app in my local terminal and the Code Institute Heroku terminal.
 
 Bugs
 - Certain data fields needed to be cleaned to remove commas in numerical fields, which caused the programme to not correctly run.
@@ -38,7 +38,6 @@ Bugs
 
 Deployment
 Steps for deployment:
-- Steps for deployment:
 - Fork or clone this repository
 - Create a new Heroku app
 - Set the build packs to Python and NodeJS in that order
@@ -47,11 +46,11 @@ Steps for deployment:
 
 Credits
 - Code Institute Love Sandwiches for general guidance, including on linking google sheets, including command line inputs, functions and deployment.
-- Code Institute for the deployment terminal.
+- Code Institute for the heroku deployment terminal.
 - Datacamp.com for guidance on working with lists and data frames.
 - Datacamp.com for sample data set 1. Dataset 1 was used for the analysis of conversion of matches if winning at half time, and of referees red card rates.
 - https://app.datacamp.com/workspace/sample-datasets
-- Original source for dataset 1 is data world.
+- Original source for dataset 1 is quoted as data world.
 - https://data.world/chas/2018-2019-premier-league-matches
 - Data set 2 was from Kaggle which was used for calculations on playing styles.  This includes the analysis of counter attacks, long balls, and team profiles.
 - https://www.kaggle.com/datasets/thesiff/premierleague1819
