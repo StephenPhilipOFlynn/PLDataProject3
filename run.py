@@ -154,7 +154,7 @@ def question_2():
     print("Tactical Question 2")
     print("Considerations for resting players if winning at half time ('HT').")
     print(f"{same_match_result} of the games finished with the same result at HT and full time.")
-    print(f"The likelihood that the match result at full time will be the same as HT is: {same_result_percentage}%.")
+    print(f"Likelihood that the match result at full time will be the same as HT is: {same_result_percentage}%.")
     print(f"When winning at HT, the away team went on to secure victory in {second_half_away_conversion_rate:.2f}% of games.")
     print(f"When winning at HT, the home team went on to secure victory in {second_half_home_conversion_rate:.2f}% of games.")
     print("If winning at HT, consider resting players, particularly if playing at our home ground.")
