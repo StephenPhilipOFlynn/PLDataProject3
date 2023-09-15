@@ -10,6 +10,8 @@ The four questions are:
 3. Which teams are most reliant on long ball passes in their style of play? This could influence team selection, favouring players with aerial ability.
 4. Which teams are most reliant on counter attacking goals in their style of play?
 
+![counter attack example](https://github.com/StephenPhilipOFlynn/PLDataProject3/assets/124165807/0d93f5e9-8f35-45ea-9b24-252d76b9a5a6)
+
 The manager has also asked for a mechanism to show a short tactical overview about each specific team.
 
 ![Team information section](https://github.com/StephenPhilipOFlynn/PLDataProject3/assets/124165807/f8da6ae2-9d48-4681-99c6-21191cfd7e8a)
