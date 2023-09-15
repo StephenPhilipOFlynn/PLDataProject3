@@ -16,6 +16,7 @@ Features
 - Data is taken from two spreadsheets of premier league football data from the 2018/2019 season.
 - The user is prompted to check 1 of 4 questions, or to press 5 for the tactical summary of a particular team's style of play.
 ![Start page on terminal - project 3](https://github.com/StephenPhilipOFlynn/PLDataProject3/assets/124165807/547d9c18-322b-4a9f-a9c5-c1a65bb03e6e)
+- By pressing 5, the user then types the name of the team, and 4 tactical metrics are shown from the data set.
 
 - Input validation, the user is informed if they have selected a tactical question or team correctly or incorrectly.
 
