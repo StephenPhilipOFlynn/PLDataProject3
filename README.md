@@ -41,6 +41,7 @@ Steps for deployment:
 
 Credits
 - Code Institute Love Sandwiches for general guidance, including on linking google sheets, including command line inputs and functions.
+- Code Institute for the deployment terminal.
 - Datacamp.com for guidance on working with lists and data frames.
 - Datacamp.com for sample data set 1. Dataset 1 was used for the analysis of conversion of matches if winning at half time, and of referees red card rates.
 - https://app.datacamp.com/workspace/sample-datasets
