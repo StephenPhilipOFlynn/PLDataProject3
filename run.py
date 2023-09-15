@@ -1,3 +1,4 @@
+"""This file prompts a user to run various calculations on premier league data."""
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 import gspread
 from google.oauth2.service_account import Credentials
@@ -25,10 +26,12 @@ df = pd.DataFrame(data)
 # Skip row 1 with includes spreadsheet titles
 df = df.iloc[1:]
 # Rename columns to access data correctly in dataframe sheet 1
-df.columns = ['Div', 'Date', 'H_Team', 'A_Team', 'FT_H_Gls', 'FT_A_Gls',
-'FT_Result', 'HT_H_Gls', 'HT_A_Gls', 'HT_Result', 'Ref', 'H_Shts', 'A_Shts',
-'H_Shts_Trgt', 'A_Shts_Trgt', 'H_Fouls', 'A_Fouls', 'H_Corners',
-'A_Corners', 'H_Yellow', 'A_Yellow', 'H_Red', 'A_Red']
+df.columns = [
+    'Div', 'Date', 'H_Team', 'A_Team', 'FT_H_Gls', 'FT_A_Gls',
+    'FT_Result', 'HT_H_Gls', 'HT_A_Gls', 'HT_Result', 'Ref', 'H_Shts',
+    'A_Shts', 'H_Shts_Trgt', 'A_Shts_Trgt', 'H_Fouls', 'A_Fouls',
+    'H_Corners', 'A_Corners', 'H_Yellow',
+    'A_Yellow', 'H_Red', 'A_Red']
 
 # Check second dataset accessible in terminal
 datasettwo = SHEET.worksheet('Sheet2')
@@ -94,7 +97,8 @@ h_t_win_first_half_only = df[(df['HT_Result'] == 'H') & (df['FT_Result'] != 'H')
 num_home_team_win_both_halves = len(h_t_win_both_halfs)
 num_home_team_win_first_half_only = len(h_t_win_first_half_only)
 # Calculate games being won by home team at half time
-home_wins_first_half = num_home_team_win_first_half_only + num_home_team_win_both_halves
+home_wins_first_half = (
+    num_home_team_win_first_half_only + num_home_team_win_both_halves)
 # Calculate percentage of home team conversions
 second_half_home_conversion_rate = (
     (num_home_team_win_both_halves / home_wins_first_half) * 100)
@@ -103,7 +107,7 @@ second_half_home_conversion_rate = (
 # Remove commmas in the two columns to perform mathematical operations
 df_two['total_passes'] = df_two['total_passes'].str.replace(',', '')
 df_two['total_passes_long'] = df_two['total_passes_long'].str.replace(',', '')
-# Consider what teams most reliant on long passes. 
+# Consider what teams most reliant on long passes.
 # We will compare long passes to total passes for this purpose
 # First convert values to integers
 df_two['total_passes_long'] = df_two['total_passes_long'].astype(int)
