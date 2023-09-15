@@ -12,7 +12,7 @@ The four questions are:
 
 The manager has also asked for a mechanism to show a short tactical overview about each specific team.
 
-
+![Team information section](https://github.com/StephenPhilipOFlynn/PLDataProject3/assets/124165807/f8da6ae2-9d48-4681-99c6-21191cfd7e8a)
 
 Features
 - Data is taken from two spreadsheets of premier league football data from the 2018/2019 season.
